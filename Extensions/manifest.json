@@ -1,0 +1,43 @@
+{
+	"manifest_version": 2,
+	"name": "CoderTube",
+	"version": "2.2.3",
+
+	"description": "Take a screenshot of any YouTube video with one click.",
+	"icons": {
+		"16": "icon-16.png",
+		"48": "icon-48.png",
+		"128": "icon-128.png"
+	},
+
+	"options_page": "options.html",
+	
+	"background": {
+		"scripts": ["background.js"]
+	},
+	
+	"content_scripts": [
+		{
+			"matches": ["https://www.youtube.com/*"],
+			"js": ["js/tesseract.min.js","js/page.js"],
+			"css": ["style.css"],
+			"run_at": "document_end"
+		}
+	],
+
+	"permissions": [
+		"https://www.youtube.com/*",
+		"webNavigation",
+		"storage"
+	],
+    "content_security_policy": "script-src 'self' 'unsafe-eval' https://cdn.jsdelivr.net; object-src 'self'",
+	"web_accessible_resources": [
+		"embeddable/embed.html",
+		"embeddable/js/*.js",
+		"embeddable/js/*.js.meta",
+		"js/worker.min.js",
+		"js/tessearct-core.wasm.js",
+		"traineddata/*.traineddata.gz"
+	  ]  
+
+}

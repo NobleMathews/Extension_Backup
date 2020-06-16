@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Screenshot YouTube options</title>
+    <script src="js/angular.min.js"></script>
+    <script src="js/ace.js"></script>
+    <script src="js/ui-ace.min.js"></script>
+    <script src="js/dat.gui.min.js"></script>
+    <script src="embed.js"></script>
+    <link rel="stylesheet" type="text/css" href="embed.css"/>  
+
+
+
+</head>
+<body ng-app="app" ng-controller="ctrl" ng-class="{'split':editor.splitMode}">
+    <div class="editor">
+      <div ng-style="{opacity:editor.opacity*.01}" ui-ace="{
+      useWrapMode : editor.useWrapMode,
+      showGutter: editor.gutter,
+      theme:editor.theme,
+      mode: editor.mode,
+      onLoad: aceLoaded,
+      onChange: aceChanged
+    }" ng-model='value'></div>
+    </div>
+  
+</body>
+</html>
