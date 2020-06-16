@@ -167,18 +167,23 @@ div.style.width = ((parseInt(window.innerWidth)-(offsets.left+playerCont.offsetW
 div.style.height = playerCont.offsetHeight+"px";
 div.style.backgroundColor = 'black';
 div.style.zIndex=1500;
+var ifrm = document.createElement("iframe");
+ifrm.setAttribute("src", chrome.extension.getURL('../embeddable/embed.html')); 
+ifrm.style.width = "100%"; 
+ifrm.style.height = "100%"; 
+div.appendChild(ifrm); 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-fetch(chrome.extension.getURL('../embeddable/embed.html'))
-    .then(response => response.text())
-    .then(data => {
-        div.innerHTML += data;
-        // other code
-        // eg update injected elements,
-        // add event listeners or logic to connect to other parts of the app
-    }).catch(err => {
-      console.log(err);
-        // handle error
-    });
+// fetch(chrome.extension.getURL('../embeddable/embed.html'))
+//     .then(response => response.text())
+//     .then(data => {
+//         div.innerHTML += data;
+//         // other code
+//         // eg update injected elements,
+//         // add event listeners or logic to connect to other parts of the app
+//     }).catch(err => {
+//       console.log(err);
+//         // handle error
+//     });
 // callangular();
 // //set attributes for btnForm
 // btnForm.action = '';
