@@ -16,6 +16,11 @@ var visible=false;
 //   }
 
 function Capturecode() {
+var theatrec=document.getElementById("player-theater-container");
+var button = document.querySelector(".ytp-size-button.ytp-button")
+if(theatrec.innerHTML=="")
+button.click();
+
 	var element=document.getElementById("PowerCoder");
 	if(typeof(element) != 'undefined' && element != null)
 	{
@@ -144,6 +149,7 @@ function offset(el) {
     return { top: rect.top + scrollTop, left: rect.left + scrollLeft }
 }
 function containerspawner() {
+
 var playerCont=document.getElementsByClassName("html5-video-player")[0];
 var video = playerCont.getElementsByTagName("video")[0];
 var topbar=document.getElementById("masthead-container"); 

@@ -59,4 +59,7 @@
   .split .editor .dg.ac {
     left: 50%;
   }
+  .dg{
+    opacity: 1 !important;
+  } 
   
