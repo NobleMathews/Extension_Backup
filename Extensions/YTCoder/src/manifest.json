@@ -1,0 +1,24 @@
+{
+  "name": "YTCoder",
+  "version": "0.1.0",
+  "manifest_version": 2,
+  "description": "OCR - Extract & Code alongside youtube tutorials",
+  "author": "noble",
+  "homepage_url": "https://github.com/NobleMathews",
+  "permissions": ["activeTab"],
+  "content_scripts": [
+    {
+      "matches": ["*://*.youtube.com/*"],
+      "run_at": "document_end",
+      "js": ["content.js"]
+    }
+  ],
+  "background": {
+    "scripts": ["hot-reload.js"]
+  },
+  "browser_action": {
+    "default_popup": "popup/popup.html"
+  },
+  "web_accessible_resources": ["inject.js"],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+}
