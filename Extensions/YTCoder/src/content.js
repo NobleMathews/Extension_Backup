@@ -159,14 +159,14 @@ function appendEditor(){
   copier.className="clipboard icon";
   temp.appendChild(copier);
   temp.appendChild(tempp);
-  topbar.insertBefore(temp,player); 
+  topbar.insertBefore(temp,ifrm); 
   $("#croptemppar").hide();
   document.getElementById('copyToClipboard-a').addEventListener('click', function() {
   
     var text = document.getElementById('croptemp');
     text.select();
     document.execCommand('copy');
-    $('#croptemp').val('')
+    $('#croptemp').empty()
     $("#croptemppar").hide();
   
   })

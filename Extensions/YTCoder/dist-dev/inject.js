@@ -16720,7 +16720,7 @@ var TabHeadings = {
         return "\n        <style>\n        #YTCoder{\n          display:none !important;\n        }\n\n        #warc-tab-headings{\n            background: none !important;\n        }\n        #warc-tab-headings> button{\n          background-image: linear-gradient(45deg, #f1c40f 50%, #F9F9F9 50%) !important;\n          color:black !important;\n        }\n        </style>\n      ";
       }
       if (this.coderActive) {
-        return "\n        <style>\n        #YTCoder{\n          display:block !important;\n        }\n        #warc-tab-headings{\n            background: none !important;\n        }\n        #warc-tab-headings> button{\n            background-image: linear-gradient(45deg, #f1c40f 50%, #2c3e50 50%) !important;\n          color:white !important;\n        }\n          #primary-inner.ytd-watch-flexy > *:not(#player):not(#coder):not(#croptemppar) {\n            height: 0;\n            overflow: hidden;\n          }\n          ytd-live-chat-frame {\n            display: none;\n          }\n        </style>\n      ";
+        return "\n        <style>\n        #YTCoder{\n          display:block !important;\n        }\n        #warc-tab-headings{\n            background: none !important;\n        }\n        #warc-tab-headings> button{\n            background-image: linear-gradient(45deg, #f1c40f 50%, #2c3e50 50%) !important;\n          color:white !important;\n        }\n          #primary-inner.ytd-watch-flexy > *:not(#croptemppar):not(#player):not(#coder){\n            height: 0;\n            overflow: hidden;\n          }\n          ytd-live-chat-frame {\n            display: none;\n          }\n        </style>\n      ";
       }
     }
   }
