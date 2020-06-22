@@ -76,7 +76,6 @@ var _this = this;
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
 var visible = false;
-
 function Capturecode() {
   var theatrec = document.getElementById("player-theater-container");
   var button = document.querySelector(".ytp-size-button.ytp-button");
@@ -216,6 +215,26 @@ window.onload = function () {
     ifrm.style.width = "100%";
     ifrm.id = "YTCoder";
     topbar.insertBefore(ifrm, player);
+    var temp = document.createElement('div');
+    temp.id = "croptemppar";
+    var tempp = document.createElement('textarea');
+    tempp.id = "croptemp";
+    tempp.style = "resize:none; width:100%; padding:10px; height:150px;";
+    tempp.className = "card card-4";
+    var copier = document.createElement("div");
+    copier.id = "copyToClipboard-a";
+    copier.className = "clipboard icon";
+    temp.appendChild(copier);
+    temp.appendChild(tempp);
+    topbar.insertBefore(temp, player);
+    $("#croptemppar").hide();
+    document.getElementById('copyToClipboard-a').addEventListener('click', function () {
+
+      var text = document.getElementById('croptemp');
+      text.select();
+      document.execCommand('copy');
+      $("#croptemppar").hide();
+    });
   }
 };
 if ($('#YTCoder').is(':visible')) {
@@ -223,94 +242,6 @@ if ($('#YTCoder').is(':visible')) {
 };
 
 $(window).trigger('resize');
-function callangular() {
-  angular.module('app', ['ui.ace']).controller('ctrl', ['$scope', '$http', '$timeout', function ($scope, $http, $timeout) {
-
-    var themes = ["chrome", "clouds", "crimson_editor", "dawn", "dreamweaver", "eclipse", "github", "solarized_light", "textmate", "tomorrow", "xcode", "kuroir", "katzenmilch", "ambiance", "chaos", "clouds_midnight", "cobalt", "idle_fingers", "kr_theme", "merbivore", "merbivore_soft", "mono_industrial", "monokai", "pastel_on_dark", "solarized_dark", "terminal", "tomorrow_night", "tomorrow_night_blue", "tomorrow_night_bright", "tomorrow_night_eighties", "twilight", "vibrant_ink"];
-    $scope.currentTheme = 14;
-
-    var modes = ['abap', 'actionscript', 'ada', 'apache_conf', 'asciidoc', 'assembly_x86', 'autohotkey', 'batchfile', 'c9search', 'c_cpp', 'cirru', 'clojure', 'cobol', 'coffee', 'coldfusion', 'csharp', 'css', 'curly', 'd', 'dart', 'diff', 'dockerfile', 'dot', 'dummy', 'dummysyntax', 'eiffel', 'ejs', 'elixir', 'elm', 'erlang', 'forth', 'ftl', 'gcode', 'gherkin', 'gitignore', 'glsl', 'golang', 'groovy', 'haml', 'handlebars', 'haskell', 'haxe', 'html', 'html_ruby', 'ini', 'io', 'jack', 'jade', 'java', 'javascript', 'json', 'jsoniq', 'jsp', 'jsx', 'julia', 'latex', 'less', 'liquid', 'lisp', 'livescript', 'logiql', 'lsl', 'lua', 'luapage', 'lucene', 'makefile', 'markdown', 'matlab', 'mel', 'mushcode', 'mysql', 'nix', 'objectivec', 'ocaml', 'pascal', 'perl', 'pgsql', 'php', 'powershell', 'praat', 'prolog', 'properties', 'protobuf', 'python', 'r', 'rdoc', 'rhtml', 'ruby', 'rust', 'sass', 'scad', 'scala', 'scheme', 'scss', 'sh', 'sjs', 'smarty', 'snippets', 'soy_template', 'space', 'sql', 'stylus', 'svg', 'tcl', 'tex', 'text', 'textile', 'toml', 'twig', 'typescript', 'vala', 'vbscript', 'velocity', 'verilog', 'vhdl', 'xml', 'xquery', 'yaml'];
-
-    $scope.value = '<html>';
-    $http.get('https://rawgit.com/mrdoob/three.js/master/examples/webgl_lines_dashed.html').success(function (data, status, headers, config) {
-      $scope.value = data;
-    }).error(function (data, status, headers, config) {
-      $scope.value = data;
-    });
-
-    $scope.aceLoaded = function (_editor) {
-
-      _editor.setFontSize(14);
-    };
-
-    $scope.aceChanged = function (_editor) {};
-
-    var editor = function editor() {
-      this.theme = themes[$scope.currentTheme];
-      this.mode = 'html';
-      this.opacity = 65;
-      this.useWrapMode = true;
-      this.gutter = true;
-      this.splitMode = false;
-      this.themeCycle = true;
-    };
-
-    $scope.editor = new editor();
-    var gui = new dat.GUI();
-
-    var opacityCtrl = gui.add($scope.editor, 'opacity', 0, 100);
-    opacityCtrl.onChange(function (value) {
-      $scope.$apply();
-    });
-
-    var themeCycle = gui.add($scope.editor, 'themeCycle', true);
-    themeCycle.onChange(function (value) {
-      $scope.$apply();
-    });
-
-    var themeController = gui.add($scope.editor, 'theme', themes).listen();
-    themeController.onChange(function (value) {
-      $scope.$apply();
-    });
-
-    var modeController = gui.add($scope.editor, 'mode', modes);
-    modeController.onChange(function (value) {
-      $scope.$apply();
-    });
-
-    var useWrapModeCtrl = gui.add($scope.editor, 'useWrapMode', true);
-    useWrapModeCtrl.onChange(function (value) {
-      $scope.$apply();
-    });
-
-    var gutterCtrl = gui.add($scope.editor, 'gutter', false);
-    gutterCtrl.onChange(function (value) {
-      $scope.$apply();
-    });
-
-    var splitMode = gui.add($scope.editor, 'splitMode', false);
-    splitMode.onChange(function (value) {
-      $scope.$apply();
-    });
-
-    var themeCycle = function themeCycle() {
-      $timeout(function () {
-        if ($scope.editor.themeCycle) {
-          $scope.currentTheme = $scope.currentTheme + 1;
-          if ($scope.currentTheme < themes.length) {
-            $scope.editor.theme = themes[$scope.currentTheme];
-          } else {
-            $scope.currentTheme = 0;
-            $scope.editor.theme = themes[$scope.currentTheme];
-          }
-        }
-        themeCycle();
-      }, 500);
-    };
-    // themeCycle();
-
-  }]);
-}
 
 var doOCRi = function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(image) {
@@ -345,11 +276,13 @@ var doOCRi = function () {
             _ref2 = _context.sent;
             text = _ref2.data.text;
 
-            console.log(text);
-            _context.next = 15;
+
+            $("#croptemp").append(text);
+            $("#croptemppar").show();
+            _context.next = 16;
             return worker.terminate();
 
-          case 15:
+          case 16:
           case "end":
             return _context.stop();
         }
@@ -361,64 +294,6 @@ var doOCRi = function () {
     return _ref.apply(this, arguments);
   };
 }();
-
-var doOCR = function () {
-  var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-    var image, result, _Tesseract2, createWorker, worker, _ref4, text;
-
-    return regeneratorRuntime.wrap(function _callee2$(_context2) {
-      while (1) {
-        switch (_context2.prev = _context2.next) {
-          case 0:
-            image = document.getElementById('image');
-            result = document.getElementById('result');
-            _Tesseract2 = Tesseract, createWorker = _Tesseract2.createWorker;
-            worker = createWorker({
-              workerPath: chrome.runtime.getURL('js/worker.min.js'),
-              langPath: chrome.runtime.getURL('traineddata'),
-              corePath: chrome.runtime.getURL('js/tesseract-core.wasm.js')
-            });
-            _context2.next = 6;
-            return worker.load();
-
-          case 6:
-            _context2.next = 8;
-            return worker.loadLanguage('eng');
-
-          case 8:
-            _context2.next = 10;
-            return worker.initialize('eng');
-
-          case 10:
-            _context2.next = 12;
-            return worker.recognize(image);
-
-          case 12:
-            _ref4 = _context2.sent;
-            text = _ref4.data.text;
-
-            console.log(text);
-            result.innerHTML = "<p>OCR Result:</p><p>" + text + "</p>";
-            _context2.next = 18;
-            return worker.terminate();
-
-          case 18:
-          case "end":
-            return _context2.stop();
-        }
-      }
-    }, _callee2, _this);
-  }));
-
-  return function doOCR() {
-    return _ref3.apply(this, arguments);
-  };
-}();
-// const startBtn = document.getElementById('start-btn');
-// startBtn.onclick = doOCR;
-
-// TODO only inject if setting enabled
-
 
 var s = document.createElement("script");
 s.src = chrome.runtime.getURL("inject.js");

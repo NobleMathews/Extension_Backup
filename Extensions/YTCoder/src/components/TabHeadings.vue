@@ -55,6 +55,7 @@ const TabHeadings = {
         #YTCoder{
           display:none !important;
         }
+
         #warc-tab-headings{
             background: none !important;
         }

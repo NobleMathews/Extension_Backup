@@ -157,7 +157,6 @@ angular.module('app', ['ui.ace'])
     'xquery',
     'yaml',
 ];
-  
   $scope.value = '<html>';
   $scope.aceLoaded = function (_editor) {
     
@@ -191,10 +190,7 @@ angular.module('app', ['ui.ace'])
     $scope.$apply();
   });
   
-    var obj = { add:function(){ console.log("clicked") }};
+    var obj1 = { add:function(){ console.log("clicked") }};
 
-  gui.add(obj, 'add').name('Re-Process');
-    var obj2 = { add:function(){ console.log("clicked") }};
-
-  gui.add(obj2, 'add').name('Download');
+  gui.add(obj1, 'add').name('Download');
 }]);
