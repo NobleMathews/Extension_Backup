@@ -1,0 +1,65 @@
+* {
+    transition: color 0.15s, background 0.15s;
+  }
+  
+  body, html {
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  nav {
+    position: fixed;
+    background: black;
+    color: white;
+    height: 50px;
+    width: 100%;
+  }
+  
+  .editor {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 0;
+  }
+  .editor iframe {
+    position: fixed;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  .editor .ace_editor {
+    overflow: hidden;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+  }
+  .editor .ace_editor .ace_scrollbar-v {
+    display: none;
+  }
+  
+  .dg.ac {
+    position: fixed;
+    z-index: 5;
+  }
+  
+  .dg .c select {
+    color: #000;
+  }
+  
+  .split .editor iframe {
+    width: 50%;
+    right: 0;
+  }
+  .split .editor .ace_editor {
+    left: 0;
+    width: 50%;
+    opacity: 1 !important;
+  }
+  .split .editor .dg.ac {
+    left: 50%;
+  }
+  .dg{
+    opacity: 1 !important;
+  } 
+  

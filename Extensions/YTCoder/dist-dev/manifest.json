@@ -1,0 +1,47 @@
+{
+  "name": "YTCoder",
+  "version": "0.1.0",
+  "manifest_version": 2,
+  "description": "OCR - Extract & Code alongside youtube tutorials",
+  "author": "noble",
+  "homepage_url": "https://github.com/NobleMathews",
+  "options_page": "options.html",
+	
+	"background": {
+		"scripts": ["background.js"]
+	},
+  "permissions": [
+    "activeTab",
+		"https://www.youtube.com/*",
+		"webNavigation",
+		"storage"
+	],
+  "content_scripts": [
+    {
+      "matches": ["*://*.youtube.com/*"],
+      "exclude_matches": [
+        "*://*.youtube.com/embed/*",
+        "*://*.youtube.com/tv*",
+        "*://gaming.youtube.com/"
+      ],
+      "run_at": "document_end",
+      "css": ["style.css"],
+      "js": ["jquery.min.js","js/tesseract.min.js","content.js"]
+    }
+  ],
+  "browser_action": {
+    "default_popup": "popup.html"
+  },
+
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "web_accessible_resources": [
+		"embeddable/embed.html",
+		"embeddable/js/*.js",
+		"embeddable/js/*.js.meta",
+		"js/worker.min.js",
+		"js/tessearct-core.wasm.js",
+    "traineddata/*.traineddata.gz",
+    "inject.js"
+	  ]  
+  
+}

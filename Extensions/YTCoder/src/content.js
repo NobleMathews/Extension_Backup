@@ -1,6 +1,5 @@
 'use strict';
-var codeKey = false;
-var codeFunctionality = 0;
+// var codeKey = false;
 var visible=false;
 
 function Capturecode() {
@@ -94,24 +93,24 @@ codeButton.innerHTML = "Code";
 codeButton.style.cssFloat = "left";
 codeButton.onclick = Capturecode;
 
-chrome.storage.sync.get(['codeKey', 'codeFunctionality'], function(result) {
-	codeKey = result.codeKey;
-	if (result.codeFunctionality === undefined)
-		codeFunctionality = 0;
-	else
-    	codeFunctionality = result.codeFunctionality;
-});
+// chrome.storage.sync.get(['codeKey', 'codeFunctionality'], function(result) {
+// 	codeKey = result.codeKey;
+// 	if (result.codeFunctionality === undefined)
+// 		codeFunctionality = 0;
+// 	else
+//     	codeFunctionality = result.codeFunctionality;
+// });
 
-document.addEventListener('keydown', function(e) {
-	if (document.activeElement.contentEditable === 'true' || document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA' || document.activeElement.contentEditable === 'plaintext')
-		return true;
+// document.addEventListener('keydown', function(e) {
+// 	if (document.activeElement.contentEditable === 'true' || document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA' || document.activeElement.contentEditable === 'plaintext')
+// 		return true;
 
-	if (codeKey && e.key === '.') {
-		Capturecode();
-		e.preventDefault();
-		return false;
-	}
-});
+// 	if (codeKey && e.key === '.') {
+// 		Capturecode();
+// 		e.preventDefault();
+// 		return false;
+// 	}
+// });
 
 AddcodeButton();
 
