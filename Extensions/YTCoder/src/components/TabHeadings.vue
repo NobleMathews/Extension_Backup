@@ -2,8 +2,6 @@
   <div id="warc-tab-headings">
     <button v-on:click="defaultOpt" :class="{active: defaultActive}">Default Options</button>
     <button v-on:click="coder" :class="{active: coderActive}">YTCoder</button>
-    <!-- <button v-on:click="relatedTabClick" :class="{active: relatedActive}">related</button>
-    <button v-on:click="chatTabClick" :class="{active: chatActive}">chat</button> -->
     <div v-html="sidebarStyles"></div>
   </div>
 </template>
@@ -54,6 +52,9 @@ const TabHeadings = {
       if (this.defaultActive) {
         return `
         <style>
+        #YTCoder{
+          display:none !important;
+        }
         #warc-tab-headings{
             background: none !important;
         }
@@ -67,6 +68,9 @@ const TabHeadings = {
       if (this.coderActive) {
         return `
         <style>
+        #YTCoder{
+          display:block !important;
+        }
         #warc-tab-headings{
             background: none !important;
         }

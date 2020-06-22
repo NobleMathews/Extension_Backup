@@ -25,8 +25,8 @@
         "*://gaming.youtube.com/"
       ],
       "run_at": "document_end",
-      "css": ["style.css"],
-      "js": ["jquery.min.js","js/tesseract.min.js","content.js"]
+      "css": ["croppie.css","style.css"],
+      "js": ["jquery.min.js","croppie.min.js","js/tesseract.min.js","content.js"]
     }
   ],
   "browser_action": {

@@ -2,18 +2,6 @@
 var codeKey = false;
 var codeFunctionality = 0;
 var visible=false;
-// const { createWorker } = Tesseract;
-
-// const startOCRengine = async () => {
-//   const worker = createWorker({
-//     workerPath: chrome.runtime.getURL('js/worker.min.js'),
-//     langPath: chrome.runtime.getURL('traineddata'),
-//     corePath: chrome.runtime.getURL('js/tesseract-core.wasm.js'),
-//   });
-// 	await worker.load();
-// 	await worker.loadLanguage('eng');
-// 	await worker.initialize('eng');
-//   }
 
 function Capturecode() {
 var theatrec=document.getElementById("player-theater-container");
@@ -132,24 +120,13 @@ function offset(el) {
     scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     return { top: rect.top + scrollTop, left: rect.left + scrollLeft }
 }
+
 function containerspawner() {
-
 var playerCont=document.getElementsByClassName("html5-video-player")[0];
-var video = playerCont.getElementsByTagName("video")[0];
-var topbar=document.getElementById("masthead-container"); 
-// console.log(video.style.height,video.style.width,video.style.top,video.style.left,playerCont.offsetHeight,playerCont.clientHeight);
-
 var div = document.createElement( 'div' );
-// var btnForm = document.createElement( 'form' );
-// var btn = document.createElement( 'input' );
 var offsets=offset(playerCont);
-//append all elements
 document.body.appendChild( div );
-// div.appendChild( btnForm );
-// btnForm.appendChild( btn );
-//set attributes for div
 div.id = 'PowerCoder';
-// console.log(playerCont.offsetTop+"px",(parseInt(window.innerWidth)-(playerCont.offsetLeft+playerCont.offsetWidth))+"px");
 div.style.position = 'absolute';
 div.style.top = offsets.top+"px";
 div.style.left = (offsets.left+playerCont.offsetWidth)+"px";
@@ -162,29 +139,6 @@ ifrm.setAttribute("src", chrome.extension.getURL('../embeddable/embed.html'));
 ifrm.style.width = "100%"; 
 ifrm.style.height = "100%"; 
 div.appendChild(ifrm); 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// fetch(chrome.extension.getURL('../embeddable/embed.html'))
-//     .then(response => response.text())
-//     .then(data => {
-//         div.innerHTML += data;
-//         // other code
-//         // eg update injected elements,
-//         // add event listeners or logic to connect to other parts of the app
-//     }).catch(err => {
-//       console.log(err);
-//         // handle error
-//     });
-// callangular();
-// //set attributes for btnForm
-// btnForm.action = '';
-
-// //set attributes for btn
-// //"btn.removeAttribute( 'style' );
-// btn.type = 'button';
-// btn.value = 'hello';
-// btn.style.position = 'absolute';
-// btn.style.top = '50%';
-// btn.style.left = '50%';
 };
 function callangular(){
 	angular.module('app', ['ui.ace'])
@@ -348,13 +302,6 @@ function callangular(){
 ];
   
   $scope.value = '<html>';
-  $http.get('https://rawgit.com/mrdoob/three.js/master/examples/webgl_lines_dashed.html').
-  success(function(data, status, headers, config) {
-    $scope.value = data;
-  }).
-  error(function(data, status, headers, config) {
-    $scope.value = data;
-  });
   
   $scope.aceLoaded = function (_editor) {
     
@@ -428,8 +375,6 @@ function callangular(){
         themeCycle();
       }, 500);
   }
- // themeCycle();
-  
   
 }]);
 }
@@ -444,7 +389,10 @@ const doOCR = async (image) => {
   });
 	await worker.load();
 	await worker.loadLanguage('eng');
-	await worker.initialize('eng');
+  await worker.initialize('eng');
+  await worker.setParameters({
+    preserve_interword_spaces: '1',
+  });
 	const { data: { text } } = await worker.recognize(image);
   console.log(text);
   await worker.terminate();

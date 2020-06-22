@@ -75,14 +75,12 @@ var _this = this;
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
-var codeKey = false;
-var codeFunctionality = 0;
 var visible = false;
 
 function Capturecode() {
   var theatrec = document.getElementById("player-theater-container");
   var button = document.querySelector(".ytp-size-button.ytp-button");
-  if (theatrec.innerHTML == "") button.click();
+  if (theatrec.innerHTML != "") button.click();
 
   var element = document.getElementById("PowerCoder");
   if (typeof element != 'undefined' && element != null) {
@@ -138,14 +136,34 @@ function Capturecode() {
   canvas.width = player.videoWidth;
   canvas.height = player.videoHeight;
   canvas.getContext('2d').drawImage(player, 0, 0, canvas.width, canvas.height);
+  var basic = $('#cropengine').croppie({
+    viewport: {
+      width: 512,
+      height: 288
+    }
+  });
+  $("#cropComp").show();
+  basic.croppie('bind', {
+    url: canvas.toDataURL(),
+    points: [0, 0, 0, 0]
+  });
+  //,{type:'base64',size:{width:imgsize[0],height:imgsize[1]},format:'png'}
+  // $('#cropresult').html(JSON.stringify(d));
+  $('#cropx').click(function () {
+    try {
+      basic.croppie('result').then(function (r) {
+        var imagefoo = document.createElement("img");
+        imagefoo.src = r;
+        imagefoo.style.width = canvas.width;
+        imagefoo.style.height = canvas.height;
+        imagefoo.style.display = "none";
 
-  var imagefoo = document.createElement("img");
-  imagefoo.src = canvas.toDataURL();
-  imagefoo.style.width = canvas.width;
-  imagefoo.style.height = canvas.height;
-  imagefoo.style.display = "none";
-
-  doOCRi(imagefoo);
+        doOCRi(imagefoo);
+      });
+    } catch (err) {}
+    basic.croppie('destroy');
+    $("#cropComp").hide();
+  });
 }
 
 function AddcodeButton() {
@@ -154,6 +172,12 @@ function AddcodeButton() {
     ytpRightControls.prepend(codeButton);
   }
   // startOCRengine();
+  var html = '<h1>Select region with code to extract</h1><p><span>Scroll and drag to select area</span><br/><br/>   <input type="button" id="cropx" value="Process Selected Region" /></p><div id="cropengine" style="width:80vw; height:70vh;"></div>';
+  var wrapper = document.createElement('div');
+  wrapper.innerHTML = html;
+  wrapper.id = "cropComp";
+  document.body.appendChild(wrapper);
+  $("#cropComp").hide();
 }
 
 var codeButton = document.createElement("button");
@@ -162,21 +186,6 @@ codeButton.style.width = "auto";
 codeButton.innerHTML = "Code";
 codeButton.style.cssFloat = "left";
 codeButton.onclick = Capturecode;
-
-chrome.storage.sync.get(['codeKey', 'codeFunctionality'], function (result) {
-  codeKey = result.codeKey;
-  if (result.codeFunctionality === undefined) codeFunctionality = 0;else codeFunctionality = result.codeFunctionality;
-});
-
-document.addEventListener('keydown', function (e) {
-  if (document.activeElement.contentEditable === 'true' || document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA' || document.activeElement.contentEditable === 'plaintext') return true;
-
-  if (codeKey && e.key === '.') {
-    Capturecode();
-    e.preventDefault();
-    return false;
-  }
-});
 
 AddcodeButton();
 
@@ -202,8 +211,6 @@ window.onload = function () {
   function appendEditor() {
     var topbar = document.getElementById("primary-inner");
     var player = document.querySelector("#primary-inner #player");
-
-    console.log(topbar);
     var ifrm = document.createElement("iframe");
     ifrm.setAttribute("src", chrome.extension.getURL('../embeddable/embed.html'));
     ifrm.style.width = "100%";
