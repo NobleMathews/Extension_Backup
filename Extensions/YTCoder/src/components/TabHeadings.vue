@@ -79,7 +79,7 @@ const TabHeadings = {
             background-image: linear-gradient(45deg, #f1c40f 50%, #2c3e50 50%) !important;
           color:white !important;
         }
-          #primary-inner.ytd-watch-flexy > *:not(#player):not(#coder) {
+          #primary-inner.ytd-watch-flexy > *:not(#player):not(#coder):not(#croptemppar) {
             height: 0;
             overflow: hidden;
           }

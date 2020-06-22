@@ -166,6 +166,7 @@ function appendEditor(){
     var text = document.getElementById('croptemp');
     text.select();
     document.execCommand('copy');
+    $('#croptemp').val('')
     $("#croptemppar").hide();
   
   })

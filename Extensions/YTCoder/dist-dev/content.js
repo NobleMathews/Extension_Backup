@@ -233,6 +233,7 @@ window.onload = function () {
       var text = document.getElementById('croptemp');
       text.select();
       document.execCommand('copy');
+      $('#croptemp').val('');
       $("#croptemppar").hide();
     });
   }
