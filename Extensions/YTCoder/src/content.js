@@ -167,6 +167,7 @@ function appendEditor(){
     text.select();
     document.execCommand('copy');
     $('#croptemp').empty()
+    window.dispatchEvent(new Event('resize'));
     $("#croptemppar").hide();
   
   })

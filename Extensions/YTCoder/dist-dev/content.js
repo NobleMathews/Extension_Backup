@@ -234,6 +234,7 @@ window.onload = function () {
       text.select();
       document.execCommand('copy');
       $('#croptemp').empty();
+      window.dispatchEvent(new Event('resize'));
       $("#croptemppar").hide();
     });
   }
