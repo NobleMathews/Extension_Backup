@@ -33,11 +33,8 @@
     "default_popup": "popup.html"
   },
 
-  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "content_security_policy": "script-src 'self' 'unsafe-eval' https://ytcoderengine.web.app/* ; object-src 'self'",
   "web_accessible_resources": [
-		"embeddable/embed.html",
-		"embeddable/js/*.js",
-		"embeddable/js/*.js.meta",
 		"js/worker.min.js",
 		"js/tessearct-core.wasm.js",
     "traineddata/*.traineddata.gz",

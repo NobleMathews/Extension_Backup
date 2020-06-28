@@ -211,7 +211,11 @@ window.onload = function () {
     var topbar = document.getElementById("primary-inner");
     var player = document.querySelector("#primary-inner #player");
     var ifrm = document.createElement("iframe");
-    ifrm.setAttribute("src", chrome.extension.getURL('../embeddable/embed.html'));
+    ifrm.setAttribute("src", "https://ytcoderengine.web.app/");
+    // // chrome.extension.getURL('../embeddable/embed.html'
+    // "embeddable/embed.html",
+    // "embeddable/js/*.js",
+    // "embeddable/js/*.js.meta",
     ifrm.style.width = "100%";
     ifrm.id = "YTCoder";
     topbar.insertBefore(ifrm, player);
