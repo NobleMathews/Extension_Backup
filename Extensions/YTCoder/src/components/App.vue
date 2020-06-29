@@ -80,7 +80,7 @@ const App = {
     resizebarStyle: function() {
       return {
         left: `${this.resizebarLeft}px`,
-        backgroundColor: this.resizebarDragging ? "yellow" : "transparent"
+        backgroundColor: this.resizebarDragging ? "rgba(46, 49, 49, 0.4)" : "transparent"
       };
     }
   },
