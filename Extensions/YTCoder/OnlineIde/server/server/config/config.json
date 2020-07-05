@@ -1,0 +1,12 @@
+{
+    "dev" : {
+       "PORT": 3000,
+       "JDOODLE_CLIENT_ID" : "5e3fcbf6a6fa0fbafd1c4ffc43a1c99e",
+       "JDOODLE_CLIENT_SECRET": "4ba723dbc0d3672380fc4eff2339de2362b3a0b34dc3d08788a1e4e7e4873fec"
+    },
+    "test" : {
+        "PORT": 3000,
+        "JDOODLE_CLIENT_ID" : "5e3fcbf6a6fa0fbafd1c4ffc43a1c99e",
+        "JDOODLE_CLIENT_SECRET": "4ba723dbc0d3672380fc4eff2339de2362b3a0b34dc3d08788a1e4e7e4873fec"
+    }
+ }
