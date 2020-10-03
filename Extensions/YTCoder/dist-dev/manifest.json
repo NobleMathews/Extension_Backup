@@ -33,10 +33,12 @@
     "default_popup": "popup.html"
   },
 
-  "content_security_policy": "script-src 'self' 'unsafe-eval' https://ytcoderengine.web.app/* ; object-src 'self'",
+  "content_security_policy": "script-src 'self' 'unsafe-eval' https://ytcoderengine.web.app/* ;  object-src 'self'",
   "web_accessible_resources": [
-		"js/worker.min.js",
-		"js/tessearct-core.wasm.js",
+    "js/worker.min.js",
+    "js/worker.min.js.map",
+    "js/tesseract-core.wasm.js",
+    "js/tesseract.min.js.map",
     "traineddata/*.traineddata.gz",
     "inject.js"
 	  ]  
